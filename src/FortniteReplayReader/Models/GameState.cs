@@ -49,7 +49,7 @@ namespace FortniteReplayReader.Models
         //public List<Player> WinningPlayers { get; internal set; } = new List<Player>();
 
         //Internal information to keep track of game state
-        internal int RemainingPlayers { get; set; }
+        public int RemainingPlayers { get; set; }
         internal int CurrentTeams { get; set; }
         internal byte SafeZonePhase { get; set; }
         internal int RemainingBots { get; set; }
