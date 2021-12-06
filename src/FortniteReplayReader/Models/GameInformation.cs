@@ -181,6 +181,7 @@ namespace FortniteReplayReader.Models
             GameState.ElapsedTime = gameState.ElapsedTime ?? GameState.ElapsedTime;
             GameState.OldTeamSize = gameState.TeamSize ?? GameState.OldTeamSize;
             GameState.TotalPlayerStructures = gameState.TotalPlayerStructures ?? GameState.TotalPlayerStructures;
+            GameState.RecorderActor = gameState.RecorderPlayerState?.Value ?? GameState.RecorderActor;
 
             if (GameState.GameWorldStartTime == 0)
             {
@@ -386,6 +387,13 @@ namespace FortniteReplayReader.Models
             {
                 newPlayer = new Player();
 
+                //Check if recording player
+                if(_actorToChannel.TryGetValue(GameState.RecorderActor, out uint channel) && channelId == channel)
+                {
+                    newPlayer.IsPlayersReplay = true;
+                    GameState.ReplayRecorder = newPlayer;
+                }
+
                 _players.TryAdd(channelId, newPlayer);
             }
 
@@ -420,7 +428,6 @@ namespace FortniteReplayReader.Models
             newPlayer.Level = playerState.Level ?? newPlayer.Level;
             newPlayer.FinishedLoading = playerState.bHasFinishedLoading ?? newPlayer.FinishedLoading;
             newPlayer.StartedPlaying = playerState.bHasStartedPlaying ?? newPlayer.StartedPlaying;
-            newPlayer.IsPlayersReplay = playerState.Ping > 0 ? true : newPlayer.IsPlayersReplay;
             newPlayer.StreamerMode = playerState.bUsingStreamerMode ?? newPlayer.StreamerMode;
             newPlayer.ThankedBusDriver = playerState.bThankedBusDriver ?? newPlayer.ThankedBusDriver;
             newPlayer.Placement = playerState.Place ?? newPlayer.Placement;
