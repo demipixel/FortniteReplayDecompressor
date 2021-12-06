@@ -44,8 +44,6 @@ namespace FortniteReplayReader.Models
 
         public EEventTournamentRound EEventTournamentRound { get; internal set; } = EEventTournamentRound.EEventTournamentRound_MAX;
 
-        public uint RecorderId { get; internal set; }
-
         public float CurrentWorldTime { get; internal set; }
 
         //public List<Player> WinningPlayers { get; internal set; } = new List<Player>();
