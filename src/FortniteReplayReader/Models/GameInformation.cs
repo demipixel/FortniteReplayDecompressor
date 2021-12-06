@@ -166,6 +166,7 @@ namespace FortniteReplayReader.Models
             GameState.SessionId = gameState.GameSessionId ?? GameState.SessionId;
             GameState.MatchTime = gameState.UtcTimeStartedMatch?.Time ?? GameState.MatchTime;
             GameState.EEventTournamentRound = gameState.EventTournamentRound != EEventTournamentRound.EEventTournamentRound_MAX ? gameState.EventTournamentRound : GameState.EEventTournamentRound;
+            GameState.RecorderId = gameState.RecorderPlayerState?.Value ?? GameState.RecorderId;
             GameState.LargeTeamGame = gameState.bIsLargeTeamGame ?? GameState.LargeTeamGame;
             GameState.MaxPlayers = gameState.TeamCount ?? GameState.MaxPlayers;
             GameState.MatchEndTime = gameState.EndGameStartTime ?? GameState.MatchEndTime;
