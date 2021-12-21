@@ -428,6 +428,7 @@ namespace FortniteReplayReader.Models
             newPlayer.Level = playerState.Level ?? newPlayer.Level;
             newPlayer.FinishedLoading = playerState.bHasFinishedLoading ?? newPlayer.FinishedLoading;
             newPlayer.StartedPlaying = playerState.bHasStartedPlaying ?? newPlayer.StartedPlaying;
+            newPlayer.IsPlayersReplay = playerState.Ping > 0 ? true : newPlayer.IsPlayersReplay;
             newPlayer.StreamerMode = playerState.bUsingStreamerMode ?? newPlayer.StreamerMode;
             newPlayer.ThankedBusDriver = playerState.bThankedBusDriver ?? newPlayer.ThankedBusDriver;
             newPlayer.Placement = playerState.Place ?? newPlayer.Placement;
